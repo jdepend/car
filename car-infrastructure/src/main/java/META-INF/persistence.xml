@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence 
+              http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="query" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<properties>
+			<!-- 自动把注解的实体加入到JPA托管环境中 -->
+			<property name="hibernate.archive.autodetection" value="jar,class,hbm" />
+			<!-- 调整JDBC抓取数量的大小: Statement.setFetchSize()，目前Oracle支持，但MySQL暂不支持该属性 -->
+			<property name="hibernate.jdbc.fetch_size" value="15" />
+			<!-- 调整JDBC批量更新数量 -->
+			<property name="hibernate.jdbc.batch_size" value="20" />
+			<!-- 格式化显示最终执行的SQL，当设置了show_sql属性时才生效 -->
+			<property name="hibernate.format_sql" value="true" />
+
+			<!-- TODO：使用非分布式的EHCache作为二级缓存，暂时不启用，转而使用更合适的Spring3.1的方法级缓存机制 
+			<property name="hibernate.cache.region.factory_class" value="org.hibernate.cache.ehcache.EhCacheRegionFactory"/> 
+			<property name="hibernate.cache.provider_configuration" value="/ehcache.xml"/>
+			<property name="hibernate.cache.use_second_level_cache" value="true" />
+			<property name="hibernate.cache.use_query_cache" value="true" /> 
+			-->
+		</properties>
+	</persistence-unit>
+</persistence>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<decorators defaultdir="/WEB-INF/decorators">
+	<excludes>
+		<pattern>*.ajax*</pattern>
+		<pattern>*/ajax/*</pattern>
+		<pattern>/js/*</pattern>
+		<pattern>/html/*</pattern>
+	</excludes>
+			
+    <decorator name="snap-master" page="master.jsp">
+        <pattern>/*</pattern>
+    </decorator>
+</decorators>
