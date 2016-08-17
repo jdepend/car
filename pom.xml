@@ -12,7 +12,7 @@
 
   <properties>
     <jdk.version>1.7</jdk.version>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.build.sourceEncoding>GBK</project.build.sourceEncoding>
   </properties>
 
   <dependencies>
@@ -33,10 +33,10 @@
         <module>car-interactive-rest</module>
   </modules>
 
- <!-- ²å¼þÅäÖÃ -->
+ <!-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
 	<build>
 		<plugins>
-			<!-- compiler²å¼þ, Éè¶¨JDK°æ±¾ -->
+			<!-- compilerï¿½ï¿½ï¿½, ï¿½è¶¨JDKï¿½æ±¾ -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
