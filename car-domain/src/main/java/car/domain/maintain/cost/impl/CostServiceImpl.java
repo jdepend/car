@@ -7,7 +7,7 @@ import car.domain.maintain.cost.CostService;
 import car.domain.maintain.register.RegisterEntity;
 import car.domain.maintain.register.RegisterItemEntity;
 
-@Service
+@Service("costService")
 public class CostServiceImpl implements CostService {
 
 	public Cost calculate(RegisterEntity entity) {

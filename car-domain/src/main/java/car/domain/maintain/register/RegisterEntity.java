@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ import car.domain.maintain.credits.CreditsService;
 import car.domain.vehicle.MasterVO;
 import car.domain.vehicle.VehicleFacade;
 import car.domain.vehicle.VehicleVO;
+import car.infrastructure.util.ApplicationContextUtil;
 
 @Entity
 @Table(name = "maintain_register")
@@ -61,7 +63,7 @@ public class RegisterEntity {
 
 	public RegisterEntity(RegisterVO registerVO) {
 		// 计算费用和积分
-		this.cost = costService.calculate(this);
+		this.cost = this.getCostService().calculate(this);
 		this.credits = creditsService.calCredits(this);
 
 		// 创建items
@@ -193,6 +195,11 @@ public class RegisterEntity {
 		RegisterVO registerVO = new RegisterVO();
 		BeanUtils.copyProperties(this, registerVO);
 		return registerVO;
+	}
+	
+	@Transient
+	private CostService getCostService(){
+		return (CostService)ApplicationContextUtil.getApplicationContext().getBean("costService");
 	}
 
 }
