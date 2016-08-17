@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import car.app.maintain.RegisterAppService;
 import car.app.maintain.RegisterAppVO;
+import car.domain.maintain.RegisterExeception;
 import car.domain.vehicle.VehicleFacade;
 import car.domain.vehicle.VehicleVO;
 
@@ -30,7 +31,7 @@ public class RegisterController {
 	@RequestMapping(value = "new.ajax", method = RequestMethod.POST)
 	public @ResponseBody
 	Map<String, Object> regist(
-			@ModelAttribute("register") RegisterAppVO register, Model model) {
+			@ModelAttribute("register") RegisterAppVO register, Model model) throws RegisterExeception {
 
 		registerAppService.create(register);
 

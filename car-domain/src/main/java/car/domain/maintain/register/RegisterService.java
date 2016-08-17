@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import car.domain.inventory.InVentoryFacade;
+import car.domain.maintain.RegisterExeception;
 import car.domain.maintain.RegisterVO;
 import car.domain.vehicle.VehicleFacade;
 
@@ -16,7 +17,7 @@ public class RegisterService {
 	@Autowired
 	private InVentoryFacade inVentoryFacade;
 
-	public void createRegister(RegisterVO registerVO) {
+	public void createRegister(RegisterVO registerVO) throws RegisterExeception {
 
 		// 生成登记单
 		RegisterEntity entity = new RegisterEntity(registerVO);

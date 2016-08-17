@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import car.domain.maintain.MaintainFacade;
+import car.domain.maintain.RegisterExeception;
 import car.domain.maintain.RegisterVO;
 
 @Service
@@ -15,7 +16,7 @@ public class RegisterAppService {
 	private MaintainFacade maintainFacade;
 
 	@Transactional(readOnly = false)
-	public void create(RegisterAppVO register) {
+	public void create(RegisterAppVO register) throws RegisterExeception {
 		// 创建维修登记单
 		RegisterVO registerVO = new RegisterVO();
 		BeanUtils.copyProperties(register, registerVO);

@@ -13,6 +13,7 @@ import javax.persistence.Transient;
 
 import org.springframework.beans.BeanUtils;
 
+import car.domain.maintain.RegisterExeception;
 import car.domain.maintain.RegisterItemVO;
 import car.domain.maintain.RegisterVO;
 import car.domain.maintain.cost.Cost;
@@ -45,11 +46,16 @@ public class RegisterEntity {
 
 	}
 
-	public RegisterEntity(RegisterVO registerVO) {
+	public RegisterEntity(RegisterVO registerVO) throws RegisterExeception {
+		
+		if(registerVO.getItems() == null || registerVO.getItems().size() == 0){
+			throw new RegisterExeception("创建维修单时缺少维修项目");
+		}
+		
 		// 计算费用和积分
 		this.cost = this.getCostService().calculate(this);
 		this.credits = this.getCreditsService().calCredits(this);
-
+		
 		// 创建items
 		RegisterItemEntity itemEntity = null;
 		for (RegisterItemVO item : registerVO.getItems()) {

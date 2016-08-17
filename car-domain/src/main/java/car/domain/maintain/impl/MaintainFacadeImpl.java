@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import car.domain.maintain.MaintainFacade;
+import car.domain.maintain.RegisterExeception;
 import car.domain.maintain.RegisterVO;
 import car.domain.maintain.register.RegisterService;
 
@@ -14,7 +15,7 @@ public class MaintainFacadeImpl implements MaintainFacade {
 	private RegisterService registerService;
 
 	@Override
-	public void createRegister(RegisterVO registerVO) {
+	public void createRegister(RegisterVO registerVO) throws RegisterExeception {
 		registerService.createRegister(registerVO);
 	}
 

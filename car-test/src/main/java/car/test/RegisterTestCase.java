@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import car.app.maintain.RegisterAppService;
 import car.app.maintain.RegisterAppVO;
+import car.domain.maintain.RegisterExeception;
 
 public class RegisterTestCase extends BaseTest {
 
@@ -12,7 +13,7 @@ public class RegisterTestCase extends BaseTest {
 	private RegisterAppService registerAppService;
 
 	@Test
-	public void testRegist() {
+	public void testRegist() throws RegisterExeception {
 
 		RegisterAppVO registerPageVO = new RegisterAppVO();
 		
