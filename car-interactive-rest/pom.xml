@@ -16,4 +16,5 @@
   		<scope>compile</scope>
   	</dependency>
   </dependencies>
+  <packaging>war</packaging>
 </project>
