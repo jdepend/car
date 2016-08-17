@@ -7,9 +7,7 @@
     <groupId>car</groupId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>car-interactive-web</groupId>
   <artifactId>car-interactive-web</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
   <name>car-interactive-web</name>
   <url>http://maven.apache.org</url>
   <properties>
@@ -17,7 +15,7 @@
   </properties>
   <dependencies>
   	<dependency>
-  		<groupId>car-app</groupId>
+  		<groupId>car</groupId>
   		<artifactId>car-app</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   		<scope>compile</scope>

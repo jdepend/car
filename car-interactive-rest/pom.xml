@@ -5,16 +5,15 @@
     <groupId>car</groupId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>car-interactive-rest</groupId>
   <artifactId>car-interactive-rest</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
   <dependencies>
   	<dependency>
-  		<groupId>car-app</groupId>
+  		<groupId>car</groupId>
   		<artifactId>car-app</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   		<scope>compile</scope>
   	</dependency>
   </dependencies>
   <packaging>war</packaging>
+  <groupId>car</groupId>
 </project>

@@ -7,7 +7,6 @@
     <groupId>car</groupId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>car-infrastructure</groupId>
   <artifactId>car-infrastructure</artifactId>
   <name>car-domain</name>
   <url>http://maven.apache.org</url>
