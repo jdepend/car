@@ -55,6 +55,10 @@
 		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
 	</listener>
 
+	<!-- 向ApplicationContextUtil中设置 ApplicationContext -->
+    <listener>
+        <listener-class>car.infrastructure.context.CarContextLoaderListener</listener-class>
+    </listener>
     <!-- ====================================================================== -->
     <!--                             Filters                                    -->
     <!-- ====================================================================== -->
