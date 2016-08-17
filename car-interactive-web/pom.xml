@@ -9,6 +9,7 @@
   </parent>
   <artifactId>car-interactive-web</artifactId>
   <name>car-interactive-web</name>
+  <packaging>war</packaging>
   <url>http://maven.apache.org</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -21,5 +22,5 @@
   		<scope>compile</scope>
   	</dependency>
   </dependencies>
-  <packaging>war</packaging>
+
 </project>

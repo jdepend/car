@@ -6,6 +6,8 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>car-interactive-rest</artifactId>
+  <name>car-interactive-rest</name>
+  <packaging>war</packaging>
   <dependencies>
   	<dependency>
   		<groupId>car</groupId>
@@ -14,6 +16,4 @@
   		<scope>compile</scope>
   	</dependency>
   </dependencies>
-  <packaging>war</packaging>
-  <groupId>car</groupId>
 </project>
