@@ -1,8 +1,6 @@
 package car.domain.vehicle;
 
-import org.springframework.stereotype.Service;
 
-@Service
 public interface VehicleFacade {
 
 	public VehicleVO obtainVehicle(String number);

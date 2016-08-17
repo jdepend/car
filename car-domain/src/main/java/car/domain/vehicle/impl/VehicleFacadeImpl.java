@@ -7,7 +7,7 @@ import car.domain.vehicle.MasterVO;
 import car.domain.vehicle.VehicleFacade;
 import car.domain.vehicle.VehicleVO;
 
-@Service
+@Service("vehicleFacade")
 public class VehicleFacadeImpl implements VehicleFacade {
 
 	@Autowired

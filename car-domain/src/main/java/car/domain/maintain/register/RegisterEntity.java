@@ -12,7 +12,6 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import car.domain.maintain.RegisterItemVO;
 import car.domain.maintain.RegisterVO;
@@ -42,21 +41,6 @@ public class RegisterEntity {
 
 	private String state;
 
-	@Autowired
-	private RegisterJpaRepo registerJpaRepo;
-
-	@Autowired
-	private RegisterItemJpaRepo registerItemJpaRepo;
-
-	@Autowired
-	private CostService costService;
-
-	@Autowired
-	private CreditsService creditsService;
-
-	@Autowired
-	private VehicleFacade vehicleFacade;
-
 	public RegisterEntity() {
 
 	}
@@ -64,7 +48,7 @@ public class RegisterEntity {
 	public RegisterEntity(RegisterVO registerVO) {
 		// 计算费用和积分
 		this.cost = this.getCostService().calculate(this);
-		this.credits = creditsService.calCredits(this);
+		this.credits = this.getCreditsService().calCredits(this);
 
 		// 创建items
 		RegisterItemEntity itemEntity = null;
@@ -89,7 +73,7 @@ public class RegisterEntity {
 	}
 
 	public void setNumber(String number) {
-		this.vehicle = this.vehicleFacade.obtainVehicle(number);
+		this.vehicle = this.getVehicleFacade().obtainVehicle(number);
 	}
 
 	@Column(name = "master_id")
@@ -98,7 +82,7 @@ public class RegisterEntity {
 	}
 
 	public void setMasterId(String masterId) {
-		this.master = this.vehicleFacade.obtainMaster(masterId);
+		this.master = this.getVehicleFacade().obtainMaster(masterId);
 	}
 
 	public List<RegisterItemEntity> obtainItems() {
@@ -149,7 +133,7 @@ public class RegisterEntity {
 	}
 
 	public void save() {
-		registerJpaRepo.save(this);
+		this.getRegisterJpaRepo().save(this);
 
 		for (RegisterItemEntity item : this.items) {
 			item.save();
@@ -157,9 +141,9 @@ public class RegisterEntity {
 	}
 
 	public RegisterEntity find(String id) {
-		RegisterEntity entity = this.registerJpaRepo.findOne(id);
+		RegisterEntity entity = this.getRegisterJpaRepo().findOne(id);
 
-		for (RegisterItemEntity item : this.registerItemJpaRepo
+		for (RegisterItemEntity item : this.getRegisterItemJpaRepo()
 				.findByRegisterId(id)) {
 			entity.addItem(item);
 		}
@@ -168,9 +152,10 @@ public class RegisterEntity {
 	}
 
 	public RegisterEntity findByVehicleNumber(String vehicleNumber) {
-		RegisterEntity entity = this.registerJpaRepo.findByVehicleNumber(vehicleNumber);
+		RegisterEntity entity = this.getRegisterJpaRepo().findByVehicleNumber(
+				vehicleNumber);
 
-		for (RegisterItemEntity item : this.registerItemJpaRepo
+		for (RegisterItemEntity item : this.getRegisterItemJpaRepo()
 				.findByRegisterId(id)) {
 			entity.addItem(item);
 		}
@@ -196,10 +181,35 @@ public class RegisterEntity {
 		BeanUtils.copyProperties(this, registerVO);
 		return registerVO;
 	}
-	
+
 	@Transient
-	private CostService getCostService(){
-		return (CostService)ApplicationContextUtil.getApplicationContext().getBean("costService");
+	private RegisterJpaRepo getRegisterJpaRepo() {
+		return (RegisterJpaRepo) ApplicationContextUtil.getApplicationContext()
+				.getBean("registerJpaRepo");
+	}
+
+	@Transient
+	private RegisterItemJpaRepo getRegisterItemJpaRepo() {
+		return (RegisterItemJpaRepo) ApplicationContextUtil
+				.getApplicationContext().getBean("registerItemJpaRepo");
+	}
+
+	@Transient
+	private CostService getCostService() {
+		return (CostService) ApplicationContextUtil.getApplicationContext()
+				.getBean("costService");
+	}
+
+	@Transient
+	private CreditsService getCreditsService() {
+		return (CreditsService) ApplicationContextUtil.getApplicationContext()
+				.getBean("creditsService");
+	}
+
+	@Transient
+	private VehicleFacade getVehicleFacade() {
+		return (VehicleFacade) ApplicationContextUtil.getApplicationContext()
+				.getBean("vehicleFacade");
 	}
 
 }
